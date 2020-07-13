@@ -20,7 +20,7 @@ export default class RollDiceCommand extends Command {
 				Dice expressions can contain the standard representations of dice in text form (e.g. 2d20 is two 20-sided dice), with addition and subtraction allowed.
 				You may also use a single \`>\` or \`<\` symbol at the end of the expression to add a target for the total dice roll - for example, \`2d20 + d15 > 35\`.
 				You can count the number of successes using \`>>\` or \`<<\`, but only on a single dice expression - for example, \`4d30 >> 20\`.
-				When running the command with no dice expression, it will default to a D20.
+				When running the command with no dice expression, it will default to a D100.
 				When just a single plain number is provided, it will be interpreted as a single die with that many sides.
 			`,
 			examples: ['roll 2d20', 'roll 3d20 - d10 + 6', 'roll d20 > 10', 'roll 6d20 >> 14', 'roll', 'roll 30', 'Billy McBillface attempts to slay the dragon. (Roll: d20 > 10)'],
@@ -31,7 +31,7 @@ export default class RollDiceCommand extends Command {
 	async run(message, args, fromPattern) { // eslint-disable-line complexity
 		const firstArgIndex = fromPattern ? 1 : 0;
 		if(!args[firstArgIndex]) {
-			args[firstArgIndex] = 'd20';
+			args[firstArgIndex] = 'd100';
 		} else {
 			const rawNumber = parseInt(args[firstArgIndex]);
 			if(!isNaN(rawNumber) && String(rawNumber) === args[firstArgIndex]) args[firstArgIndex] = `d${rawNumber}`;
@@ -56,17 +56,19 @@ export default class RollDiceCommand extends Command {
 
 				// Target for total roll
 				if(matches[2] === '>' || matches[2] === '<') {
-					const success = matches[2] === '>' ? rollResult.roll > target : rollResult.roll < target;
+					const success = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= target;
+					const hard_success = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= (target / 2);
+					const extreme_success = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= (target / 5);
 					const diceList = this.buildDiceList(rollResult, totalDice);
 					response = oneLine`
 						${message.author} has **${success ? 'succeeded' : 'failed'}**.
-						(Rolled ${rollResult.roll}, ${!success ? 'not' : ''} ${matches[2] === '>' ? 'greater' : 'less'} than ${target}${diceList ? `;   ${diceList}` : ''})
+						(Rolled ${rollResult.roll}, ${!success ? 'not' : ''} ${matches[2] === '>' ? 'greater' : 'less'} than ${target}${diceList ? `;   ${diceList}` : ''}. Hard success ${!hard_success ? '' : 'not'} reached. Extreme success ${!extreme_success ? '' : 'not'} reached.)
 					`;
 
 				// Target for individual dice (success counting)
 				} else if(matches[2] === '>>' || matches[2] === '<<') {
 					if(rollResult.diceRaw.length !== 1) return { plain: `${message.author} tried to count successes with multiple dice expressions.` };
-					const successes = rollResult.diceRaw[0].reduce((prev, die) => prev + (matches[2] === '>>' ? die > target : die < target), 0);
+					const successes = rollResult.diceRaw[0].reduce((prev, die) => prev + (matches[2] === '>>' ? die >= target : die <= target), 0);
 					response = oneLine`
 						${message.author} has **${successes > 0 ? `succeeded ${successes} time${successes !== 1 ? 's' : ''}` : `failed`}**.
 						${rollResult.diceRaw[0].length > 1 && rollResult.diceRaw[0].length <= 100 ? `(${rollResult.diceRaw[0].join(',   ')})` : ''}
