@@ -57,12 +57,12 @@ export default class RollDiceCommand extends Command {
 				// Target for total roll
 				if(matches[2] === '>' || matches[2] === '<') {
 					const success = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= target;
-					const hard_success = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= (target / 2);
-					const extreme_success = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= (target / 5);
+					const hardSuccess = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= (target / 2);
+					const extremeSuccess = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= (target / 5);
 					const diceList = this.buildDiceList(rollResult, totalDice);
 					response = oneLine`
 						${message.author} has **${success ? 'succeeded' : 'failed'}**.
-						(Rolled ${rollResult.roll}, ${!success ? 'not' : ''} ${matches[2] === '>' ? 'greater' : 'less'} than ${target}${diceList ? `;   ${diceList}` : ''}. Hard success ${!hard_success ? '' : 'not'} reached. Extreme success ${!extreme_success ? '' : 'not'} reached.)
+						(Rolled ${rollResult.roll}, ${!success ? 'not' : ''} ${matches[2] === '>' ? 'greater' : 'less'} than ${target}${diceList ? `;   ${diceList}` : ''}. Hard success ${!hardSuccess ? '' : 'not'} reached. Extreme success ${!extremeSuccess ? '' : 'not'} reached.)
 					`;
 
 				// Target for individual dice (success counting)
