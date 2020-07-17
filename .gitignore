@@ -5,3 +5,4 @@ npm-debug.log
 rpbot.sqlite3
 settings.yml
 rpbot.log
+package-lock.json

@@ -15,7 +15,7 @@ export const config = bot.config.yargs(yargs)
 	.example('$0 --email SomeGuy@SomeSite.com --password SomeCrazyPassword123', 'Starts the bot using an email and password')
 	.example('$0 --config settings.yml', 'Starts the bot using a config file')
 	.example('$0 completion', 'Outputs Bash completion script')
-	.epilogue(`RPBot v${version} by Schuyler Cebulskie (Gawdl3y): https://github.com/Gawdl3y/discord-rpbot/`)
+	.epilogue(`coc-bot v${version} by Zora Xing: https://github.com/xingrz1993/discord-coc-bot/`)
 
 	// Database
 	.option('database', {

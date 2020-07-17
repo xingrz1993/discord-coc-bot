@@ -1,20 +1,17 @@
-# Discord RPBot
-[![Discord](https://discordapp.com/api/guilds/204792270568816640/embed.png)](https://discord.gg/w3P7Sz4)
-[![Downloads](https://img.shields.io/npm/dt/discord-rpbot.svg)](https://www.npmjs.com/package/discord-rpbot)
-[![Version](https://img.shields.io/npm/v/discord-rpbot.svg)](https://www.npmjs.com/package/discord-rpbot)
-[![Dependency status](https://david-dm.org/Gawdl3y/discord-rpbot.svg)](https://david-dm.org/Gawdl3y/discord-rpbot)
-[![License](https://img.shields.io/npm/l/discord-rpbot.svg)](LICENSE)
+# Discord COC Bot
+[![Downloads](https://img.shields.io/npm/dt/discord-rpbot.svg)](https://www.npmjs.com/package/discord-coc-bot)
+[![Version](https://img.shields.io/npm/v/discord-coc-bot.svg)](https://www.npmjs.com/package/discord-coc-bot)
+[![License](https://img.shields.io/npm/l/discord-coc-bot.svg)](LICENSE)
 
-This is a simple Discord bot that contains commands useful for roleplaying.
+This bot is a fork of [Discord RPbot](https://www.github.com/gawdl3y/discord-rpbot). Updates have been made for a better experience of playing Call of Cthulu.
 It is built with [GRAF](https://github.com/Gawdl3y/discord-graf).
 
 Have any questions/feedback?
-Join the [Discord server](https://discord.gg/w3P7Sz4).
 If you find any bugs or have suggestions, feel free to [create an issue](/../../issues).
 
 ## Install
 ### Global bot
-[Add the bot to your server](https://discordapp.com/oauth2/authorize?client_id=204353188172660747&scope=bot&permissions=0)
+This is currently only a private used bot. Please contact me if you want to invite this bot in your Discord server.
 
 ### Your own instance
 You must be running Node.js 6.0.0 or newer.  
