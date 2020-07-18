@@ -1,4 +1,5 @@
 /rpbot-storage
+/.github
 rpbot.sqlite3
 settings.yml
 rpbot.log
