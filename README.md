@@ -15,7 +15,7 @@ This is currently only a private used bot. Please contact me if you want to invi
 
 ### Your own instance
 You must be running Node.js 6.0.0 or newer.  
-Run `sudo npm install -g discord-rpbot --production --no-optional`.
+Run `sudo npm install -g discord-coc-bot --production --no-optional`.
 
 **Note:** Anonymous analytics are enabled by default.
 There is no identifiable or potentially private/unsafe information sent whatsoever.
