@@ -2,6 +2,7 @@
 [![Downloads](https://img.shields.io/npm/dt/discord-coc-bot.svg)](https://www.npmjs.com/package/discord-coc-bot)
 [![Version](https://img.shields.io/npm/v/discord-coc-bot.svg)](https://www.npmjs.com/package/discord-coc-bot)
 [![License](https://img.shields.io/npm/l/discord-coc-bot.svg)](LICENSE)
+[![Node.js CI](https://github.com/xingrz1993/discord-coc-bot/workflows/Node.js%20CI/badge.svg)](https://github.com/xingrz1993/discord-coc-bot/actions?query=workflow%3A%22Node.js+CI%22)
 
 This bot is a fork of [Discord RPbot](https://www.github.com/gawdl3y/discord-rpbot). Updates have been made for a better experience of playing Call of Cthulu.
 It is built with [GRAF](https://github.com/Gawdl3y/discord-graf).
