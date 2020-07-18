@@ -1,5 +1,5 @@
 # Discord COC Bot
-[![Downloads](https://img.shields.io/npm/dt/discord-rpbot.svg)](https://www.npmjs.com/package/discord-coc-bot)
+[![Downloads](https://img.shields.io/npm/dt/discord-coc-bot.svg)](https://www.npmjs.com/package/discord-coc-bot)
 [![Version](https://img.shields.io/npm/v/discord-coc-bot.svg)](https://www.npmjs.com/package/discord-coc-bot)
 [![License](https://img.shields.io/npm/l/discord-coc-bot.svg)](LICENSE)
 
