@@ -57,8 +57,8 @@ export default class RollDiceCommand extends Command {
 				// Target for total roll
 				if(matches[2] === '>' || matches[2] === '<') {
 					const success = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= target;
-					const hardSuccess = matches[2] === '>' ? rollResult.roll >= Math.ceil(( dice - target ) / 2) + target : rollResult.roll <= Math.floor(target / 2);
-					const extremeSuccess = matches[2] === '>' ? rollResult.roll >= Math.ceil(( dice - target ) / 5 * 4) + target : rollResult.roll <= Math.floor(target / 5);
+					const hardSuccess = matches[2] === '>' ? rollResult.roll >= Math.ceil((dice - target) / 2) + target : rollResult.roll <= Math.floor(target / 2);
+					const extremeSuccess = matches[2] === '>' ? rollResult.roll >= Math.ceil((dice - target) / 5 * 4) + target : rollResult.roll <= Math.floor(target / 5);
 					const diceList = this.buildDiceList(rollResult, totalDice);
 					response = oneLine`
 						${message.author} has **${success ? 'succeeded' : 'failed'}**.
