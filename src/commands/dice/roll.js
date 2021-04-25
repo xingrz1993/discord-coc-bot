@@ -57,13 +57,15 @@ export default class RollDiceCommand extends Command {
 				// Target for total roll
 				if(matches[2] === '>' || matches[2] === '<') {
 					const success = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= target;
-					const hardSuccess = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= Math.floor(target / 2);
-					const extremeSuccess = matches[2] === '>' ? rollResult.roll >= target : rollResult.roll <= Math.floor(target / 5);
+					const hardBoundary = matches[2] === '>' ? Math.ceil((dice.max() - target) / 2) + target : Math.floor(target / 2);
+					const extremeBoundary = matches[2] === '>' ? Math.ceil((dice.max() - target) / 5 * 4) + target : Math.floor(target / 5);
+					const hardSuccess = matches[2] === '>' ? rollResult.roll >= hardBoundary + target : rollResult.roll <= hardBoundary;
+					const extremeSuccess = matches[2] === '>' ? rollResult.roll >= extremeBoundary : rollResult.roll <= extremeBoundary;
 					const diceList = this.buildDiceList(rollResult, totalDice);
 					response = oneLine`
 						${message.author} has **${success ? 'succeeded' : 'failed'}**.
 						Rolled ${rollResult.roll}, ${!success ? 'not ' : ''}${matches[2] === '>' ? 'greater than or equal to' : 'less than or equal to'} ${target}${diceList ? `;   ${diceList}` : ''}. 
-						${hardSuccess && !extremeSuccess ? `**Hard success reached (${Math.floor(target / 2)}/${target}).**` : ''} ${extremeSuccess ? `**Extreme success reached (${Math.floor(target / 5)}/${target}).**` : ''}
+						${hardSuccess && !extremeSuccess ? `**Hard success reached (${hardBoundary}/${matches[2] === '>' ? dice.max() : target}).**` : ''} ${extremeSuccess ? `**Extreme success reached (${extremeBoundary}/${matches[2] === '>' ? dice.max() : target}).**` : ''}
 					`;
 
 				// Target for individual dice (success counting)
